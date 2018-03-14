@@ -18,7 +18,7 @@
 <div class="panel panel-success">
 	<div class="panel-heading">
 		<span class="panel-title">
-			<?php echo __('Add Document'); ?>
+			<?php echo __('Upload Document'); ?>
 		</span>
 		<span class="panel-title-right">
 			<?php echo $this->Html->link(__('Back', true), ['action'=>'index'], ['class'=>'btn btn-default']); ?>

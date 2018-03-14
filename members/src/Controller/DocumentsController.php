@@ -33,14 +33,16 @@ class DocumentsController extends AppController {
 					'label'=>'Search',
 					'tagline'=>'Search by document name, type',
 					'condition'=>'multiple',
-					'searchFields'=>['Documents.signature_name', 'Documents.signature'],
+					'searchFields'=>['Documents.name', 'Documents.doc_file','Dropdowns.name'],
 					'inputOptions'=>['style'=>'width:300px;']
 				],
 				'Documents.dropdown_id'=>[
 					'type'=>'select',
 					'label'=>'Category',
+					'options'=>['empty'=>''],
 					'model'=>'Dropdowns',
-					'selector'=>'getDocumentCategories'
+					'selector'=>'getDocumentCategories',
+					'selectorArguments'=>'documents'
 				]
 			]
 		],
@@ -51,14 +53,15 @@ class DocumentsController extends AppController {
 					'label'=>'Search',
 					'tagline'=>'Search by document name, type',
 					'condition'=>'multiple',
-					'searchFields'=>['Documents.signature_name', 'Documents.signature'],
+					'searchFields'=>['Documents.name', 'Documents.doc_file'],
 					'inputOptions'=>['style'=>'width:300px;']
 				],
 				'Documents.dropdown_id'=>[
 					'type'=>'select',
 					'label'=>'Category',
 					'model'=>'Dropdowns',
-					'selector'=>'getDocumentCategories'
+					'selector'=>'getDocumentCategories',
+					'selectorArguments'=>'documents'
 				]
 			]
 		]
