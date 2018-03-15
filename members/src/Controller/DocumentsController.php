@@ -166,7 +166,8 @@ class DocumentsController extends AppController {
 		}
 		$this->loadModel('Dropdowns');
 		$categories = $this->Dropdowns->getDocumentCategories('documents');
-		$this->set(compact('documentEntity', 'categories'));
+		$doccategories = $this->Dropdowns->getDocumentCategoriesWords('doc_category');
+		$this->set(compact('documentEntity', 'categories','doccategories'));
 	}
 	/**
 	 * It is used to edit document
@@ -313,7 +314,7 @@ class DocumentsController extends AppController {
 			if(isset($this->request->data['Documents']['document_file'])) {
 				$_FILES[$fileInput] = $this->request->data['Documents']['document_file'];
 				// change file tpye here action specific
-				$uploadFileTypes = array("jpeg", "jpg", "gif", "png", "pdf");
+				$uploadFileTypes = array("jpeg", "jpg", "gif", "png", "pdf","doc","docx","ppt","pptx");
 				// change max size action specific
 				$maxSize = 10485760;
 			}

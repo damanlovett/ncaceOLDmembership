@@ -68,4 +68,15 @@ class DropdownsTable extends Table
 		$results = $query->toArray();
 		return $results;
 	}
+	public function getDocumentCategoriesWords($id='null') {
+		//return array(''=>'Select', '1'=>'Category 1', '2'=>'Category 2', '3'=>'Category 3', '4'=>'Category 4', '5'=>'Category 5');
+		$query = $this->find('list', [
+    'keyField' => 'title',
+    'valueField' => 'title',
+	'conditions' => ['Dropdowns.list_type' => $id],
+	'order' => ['Dropdowns.title'=>'ASC']
+]);
+		$results = $query->toArray();
+		return $results;
+	}
 }
