@@ -9,7 +9,7 @@
 	$(function() {
 		$.docupload.uploadurl = urlForJs+"Documents/uploadAttachment";
 		$.docupload.deleteurl = urlForJs+"Documents/deleteAttachment";
-		$.docupload.uploadFileTypes = ["jpeg", "jpg", "gif", "png", "pdf"];
+		$.docupload.uploadFileTypes = ["jpeg", "jpg", "gif", "png", "pdf","doc","docx","ppt","pptx"];
 		$.docupload.uploadMaxSize = "10485760";
 		$.docupload.multiple = false;
 		$.docupload._attachFileUpload();
@@ -65,7 +65,7 @@
 							<a href="#" class="cancelUpload"><?php echo $this->Html->image('blank.gif', array('class'=>'icon'));?></a>
 						</div>
 					</div>
-					<div class="attachments-type">only jpeg, jpg, gif, png, pdf file types are supported. (Max 10 MB)</div>
+					<div class="attachments-type">only jpeg, jpg, gif, png, pdf, doc, docx, ppt, pptx file types are supported. (Max 10 MB)</div>
 					<div class="all-attachments">
 						<?php
 						$fullpath = WWW_ROOT."temp".DS.$attachment_no.DS;
