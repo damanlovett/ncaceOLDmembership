@@ -8,9 +8,9 @@
 			<tr>
 				<th><?php echo __('#'); ?></th>
 				<th class="psorting"><?php echo $this->Paginator->sort('Documents.name', __('Document')); ?></th>
-				<th class="psorting"><?php echo $this->Paginator->sort('Dropdowns.title', __('Category')); ?></th>
-				<th class="psorting"><?php echo $this->Paginator->sort('Documents.doc_type', __('Document Type')); ?></th>
-				<th class="psorting"><?php echo $this->Paginator->sort('Documents.created', __('Created')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Documents.doc_type', __('Category')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Dropdowns.title', __('Type')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Documents.created', __('Created / by')); ?></th>
 				<th><a href="#">Options</a></th>
 			</tr>
 		</thead>
@@ -25,9 +25,14 @@
 					echo "<tr>";
 						echo "<td>".$i."</td>";
 						echo "<td>".$row['name']."</td>";
+						echo "<td>".$row['doc_type']."</td>";
 						echo "<td>".$row['dropdown']['title']."</td>";
-						echo "<td>".$row['doc_type']."  ".$row['User']['firstname']."</td>";
-						echo "<td>".$row['created']->format('M d, Y')."</td>";
+					
+					
+					    echo "<td>".$row['created']->format('m/d/y')." by ".$this->Html->link(__('').$row['user']['first_name']."  ".$row['user']['last_name'], ['controller'=>'Users', 'action'=>'viewUser', 'plugin'=>'Usermgmt', $row['user']['id'], 'page'=>$page], ['escape'=>false]);
+					
+					
+					
 						echo "<td><a class='btn btn-success btn-xs' role='button' title='download' target='_blank' href='".SITE_URL."library/documents/".$row['user_id']."/".$row['doc_file']."'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span></a></td>";
 						echo "&nbsp;&nbsp;";
 					echo "</tr>";

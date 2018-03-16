@@ -10,6 +10,7 @@ class DocumentsTable extends Table {
 		$this->addBehavior('Timestamp');
 		$this->primaryKey('id');
 		$this->belongsTo('Dropdowns');
+		$this->belongsTo('Users');
 	}
 	public function validationForAdd($validator) {
 		$validator

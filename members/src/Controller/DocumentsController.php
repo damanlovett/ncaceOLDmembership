@@ -31,18 +31,10 @@ class DocumentsController extends AppController {
 				'Documents'=>[
 					'type'=>'text',
 					'label'=>'Search',
-					'tagline'=>'Search by document name, type',
+					'tagline'=>'Search by document name, type, category',
 					'condition'=>'multiple',
-					'searchFields'=>['Documents.name', 'Documents.doc_file','Dropdowns.name'],
+					'searchFields'=>['Documents.name', 'Documents.doc_file','Documents.doc_type'],
 					'inputOptions'=>['style'=>'width:300px;']
-				],
-				'Documents.dropdown_id'=>[
-					'type'=>'select',
-					'label'=>'Category',
-					'options'=>['empty'=>''],
-					'model'=>'Dropdowns',
-					'selector'=>'getDocumentCategories',
-					'selectorArguments'=>'documents'
 				]
 			]
 		],
@@ -51,17 +43,10 @@ class DocumentsController extends AppController {
 				'Documents'=>[
 					'type'=>'text',
 					'label'=>'Search',
-					'tagline'=>'Search by document name, type',
+					'tagline'=>'Search by document name, type, category',
 					'condition'=>'multiple',
-					'searchFields'=>['Documents.name', 'Documents.doc_file'],
+					'searchFields'=>['Documents.name', 'Documents.doc_file','Documents.doc_type'],
 					'inputOptions'=>['style'=>'width:300px;']
-				],
-				'Documents.dropdown_id'=>[
-					'type'=>'select',
-					'label'=>'Category',
-					'model'=>'Dropdowns',
-					'selector'=>'getDocumentCategories',
-					'selectorArguments'=>'documents'
 				]
 			]
 		]
@@ -81,7 +66,7 @@ class DocumentsController extends AppController {
 		}
 	}
 	public function index() {
-		$this->paginate = ['limit'=>10, 'contain'=>['Dropdowns'], 'order'=>['Documents.id'=>'DESC']];
+		$this->paginate = ['limit'=>10, 'contain'=>(['Dropdowns','Users']), 'order'=>['Documents.id'=>'DESC']];
 		$this->Search->applySearch();
 		$documents = $this->paginate($this->Documents)->toArray();
 		$this->set(compact('documents'));

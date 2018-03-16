@@ -136,6 +136,15 @@ $inactiveClass = '';
 					echo "<li>".$this->Html->link(__('NCACE Membership'), ['controller'=>'Users', 'action'=>'members', 'plugin'=>'Usermgmt'])."</li>";
 					echo "</ul>";
 					echo "</li>";
+	
+					echo "<li class='dropdown'>";
+					echo $this->Html->link(__('Library').' <span class="caret"></span>&nbsp;&nbsp;<span class="label label-warning">New</span>', '#', ['escape'=>false, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown']);
+					echo "<ul class='dropdown-menu'>";
+					echo "<li>".$this->Html->link(__('Home'), ['controller'=>'Documents', 'action'=>'index', 'plugin'=>false])."</li>";
+					echo "<li>".$this->Html->link(__('My Documents'), ['controller'=>'Documents', 'action'=>'mydocuments', 'plugin'=>false])."</li>";
+					echo "</ul>";
+					echo "</li>";
+						
 					
 					echo "<li class='dropdown'>";
 						echo $this->Html->link(__('My Account').' <span class="caret"></span>', '#', ['escape'=>false, 'class'=>'dropdown-toggle', 'data-toggle'=>'dropdown']);
@@ -155,7 +164,8 @@ $inactiveClass = '';
 						echo "</ul>";
 					echo "</li>";
 				}
-				echo "<li><a href='#' title='coming soon'>Document Library</a></li>";
+
+					
 				/* echo "<li class='".(($actionUrl=='UserContacts/contactUs') ? $activeClass : $inactiveClass)."'>".$this->Html->link(__("Contact Us"), '/contactUs')."</li>"; */
 				/*if($this->UserAuth->isLogged()) {
 					echo "<li>".$this->Html->link(__('Sign Out'), ['controller'=>'Users', 'action'=>'logout', 'plugin'=>'Usermgmt'])."</li>";

@@ -25,24 +25,33 @@
 		</span>
 	</div>
 	<div class="panel-body">
+        <div class="alert alert-info" style="text-align: left;">
+<span><p>Any document uploaded is visible and downloadable to all members.  Make sure any document  that is uploaded does not contact sensitive information.  Do not upload any information that you do not own or do not have permissions to share.  NCACE is not responsible for the use of any documents that are downloaded from this site.  If you have any question please contact the President before you upload a document</p></span>
+<span style="margin-top:20px;"><strong>Suggested documents to upload:</strong>	
+	</div>	
+	
+	
+	
 		<?php echo $this->element('Usermgmt.ajax_validation', ['formId'=>'addDocumentForm', 'submitButtonId'=>'addDocumentSubmitBtn']); ?>
 		<?php echo $this->Form->create($documentEntity, ['type'=>'file', 'id'=>'addDocumentForm', 'class'=>'form-horizontal']); ?>
-		<div class="um-form-row form-group">
-			<label class="col-sm-2 control-label required"><?php echo __('Category'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $this->Form->input('Documents.dropdown_id', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$categories]); ?>
-			</div>
-		</div>
-		<div class="um-form-row form-group">
-			<label class="col-sm-2 control-label required"><?php echo __('Document Type'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $this->Form->input('Documents.doc_type', ['type'=>'text', 'label'=>false, 'div'=>false, 'class'=>'form-control']); ?>
-			</div>
-		</div>
+		
 		<div class="um-form-row form-group">
 			<label class="col-sm-2 control-label required"><?php echo __('Document Name'); ?></label>
 			<div class="col-sm-4">
 				<?php echo $this->Form->input('Documents.name', ['type'=>'text', 'label'=>false, 'div'=>false, 'class'=>'form-control']); ?>
+			</div>
+		</div>
+		
+		<div class="um-form-row form-group">
+			<label class="col-sm-2 control-label required"><?php echo __('Category'); ?></label>
+			<div class="col-sm-4">
+				<?php echo $this->Form->input('Documents.doc_type', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$doccategories]); ?>
+			</div>
+		</div>
+		<div class="um-form-row form-group">
+			<label class="col-sm-2 control-label required"><?php echo __('Type'); ?></label>
+			<div class="col-sm-4">
+				<?php echo $this->Form->input('Documents.dropdown_id', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$categories]); ?>
 			</div>
 		</div>
 		<div class="um-form-row form-group">
