@@ -108,6 +108,19 @@ class UsersController extends UsermgmtAppController {
 				]
 			]
 		],
+		'members'=>[
+			'Usermgmt.Users'=>[
+				'Users'=>[
+					'type'=>'text',
+					'label'=>'Search',
+					'tagline'=>'Search by name, username, email',
+					'condition'=>'multiple',
+					'searchFields'=>['Users.first_name', 'Users.last_name', 'Users.username', 'Users.email'],
+					'searchFunc'=>['plugin'=>'Usermgmt', 'controller'=>'Users', 'function'=>'indexSearch'],
+					'inputOptions'=>['style'=>'width:200px;']
+				]
+			]
+		],
 		'online'=>[
 			'Usermgmt.UserActivities'=>[
 				'UserActivities'=>[
@@ -403,6 +416,13 @@ public function employer_membership() {
 			$users[$key]['user_group_name'] = $this->UserGroups->getGroupsByIds($user['user_group_id']);
 		}	
 		$this->set(compact('users'));
+		
+		$this->loadModel('Usermgmt.UserEmailSignatures');	 		 
+		$questions = $this->UserEmailSignatures->getEmailSignatureById('1');		
+		
+		$this->set(compact('questions'));
+		
+		
 		if($this->request->is('ajax')) {
 			$this->viewBuilder()->layout('ajax');
 			$this->render('/Element/members');

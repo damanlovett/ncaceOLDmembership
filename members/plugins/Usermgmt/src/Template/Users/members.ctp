@@ -31,7 +31,6 @@ THE PRODUCT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIE
 		<?= $this->Html->link(__('Renew Membership'), ['action' => 'my'], ['class'=>'btn btn-primary btn-sm']) ?>
 		<?= $this->Html->link(__('Return Home'), ['plugin'=>'Usermgmt','controller'=>'users','action' => 'dashboard'], ['class'=>'btn btn-primary btn-sm']) ?>
 </div>
-            </span>
         </div>
         <div class="panel-body">
         <div class="alert alert-info" style="text-align: left;">
