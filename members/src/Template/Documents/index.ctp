@@ -4,6 +4,13 @@
 			<?php echo __('Document Library'); ?>
 		</span>
 		<span class="panel-title-right">
+				
+		<?php if($this->UserAuth->HP('Documents', 'edit', false)) {
+    echo $this->Html->link(__('Admin View'), ['action'=>'manager'], ['class'=>'btn btn-default'], ['class'=>'btn btn-default um-btn']);	
+				}?>			
+			
+		</span>
+		<span class="panel-title-right">
 			<?php echo $this->Html->link(__('Add Document', true), ['action'=>'add'], ['class'=>'btn btn-default']); ?>
 		</span>
 		<span class="panel-title-right">

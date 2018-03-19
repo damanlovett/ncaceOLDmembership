@@ -10,12 +10,7 @@
 			<?php echo $this->Html->link(__('My Documents', true), ['action'=>'mydocuments'], ['class'=>'btn btn-default']); ?>
 		</span>
 		<span class="panel-title-right">
-		
-		
-		<?php if($this->UserAuth->HP('Documents', 'mydocuments', false)) {
-    echo $this->Html->link(__('Admin View'), ['action'=>'manager'], ['class'=>'btn btn-default'], ['class'=>'btn btn-default um-btn']);	
-				}?>			
-			
+			<?php echo $this->Html->link(__('Documents Home', true), ['action'=>'index'], ['class'=>'btn btn-default']); ?>
 		</span>
 	</div>
 	<div class="panel-body">
