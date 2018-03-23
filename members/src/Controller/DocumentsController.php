@@ -38,6 +38,18 @@ class DocumentsController extends AppController {
 				]
 			]
 		],
+		'manager'=>[
+			'Documents'=>[
+				'Documents'=>[
+					'type'=>'text',
+					'label'=>'Search',
+					'tagline'=>'Search by document name, type, category',
+					'condition'=>'multiple',
+					'searchFields'=>['Documents.name', 'Documents.doc_file','Documents.doc_type'],
+					'inputOptions'=>['style'=>'width:300px;']
+				]
+			]
+		],
 		'mydocuments'=>[
 			'Documents'=>[
 				'Documents'=>[
@@ -70,6 +82,25 @@ class DocumentsController extends AppController {
 		$this->Search->applySearch();
 		$documents = $this->paginate($this->Documents)->toArray();
 		$this->set(compact('documents'));
+		if($this->request->is('ajax')) {
+			$this->viewBuilder()->layout('ajax');
+			$this->render('/Documents/all_documents');
+		}
+	}
+	public function manager() {
+		$this->paginate = ['limit'=>20, 'contain'=>(['Dropdowns','Users']), 'order'=>['Documents.id'=>'DESC']];
+		$this->Search->applySearch();
+		$documents = $this->paginate($this->Documents)->toArray();
+		$documents2 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>19]))->toArray();
+		$documents3 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>20]))->toArray();
+		$documents4 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>21]))->toArray();
+		$documents5 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>22]))->toArray();
+		$documents6 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>23]))->toArray();
+		$documents7 =$this->paginate($this->Documents->find()->where(['Documents.dropdown_id'=>24]))->toArray();
+		$this->set(compact('documents','documents2','documents3','documents4','documents5','documents6','documents7'));
+		
+		
+		
 		if($this->request->is('ajax')) {
 			$this->viewBuilder()->layout('ajax');
 			$this->render('/Documents/all_documents');
@@ -150,9 +181,10 @@ class DocumentsController extends AppController {
 			}
 		}
 		$this->loadModel('Dropdowns');
-		$categories = $this->Dropdowns->getDocumentCategories('documents');
+		$folders = $this->Dropdowns->getDocumentCategories('folders');
+		$categories = $this->Dropdowns->getDocumentCategoriesWords('documents');
 		$doccategories = $this->Dropdowns->getDocumentCategoriesWords('doc_category');
-		$this->set(compact('documentEntity', 'categories','doccategories'));
+		$this->set(compact('documentEntity', 'categories','doccategories','folders'));
 	}
 	/**
 	 * It is used to edit document

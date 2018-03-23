@@ -49,9 +49,15 @@
 			</div>
 		</div>
 		<div class="um-form-row form-group">
+			<label class="col-sm-2 control-label required"><?php echo __('Folder'); ?></label>
+			<div class="col-sm-4">
+				<?php echo $this->Form->input('Documents.dropdown_id', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$folders]); ?>
+			</div>
+		</div>
+		<div class="um-form-row form-group">
 			<label class="col-sm-2 control-label required"><?php echo __('Type'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $this->Form->input('Documents.dropdown_id', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$categories]); ?>
+				<?php echo $this->Form->input('Documents.type', ['type'=>'select', 'label'=>false, 'div'=>false, 'class'=>'form-control', 'options'=>$categories]); ?>
 			</div>
 		</div>
 		<div class="um-form-row form-group">

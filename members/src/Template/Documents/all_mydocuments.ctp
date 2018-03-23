@@ -9,8 +9,9 @@
 				<th><?php echo __('#'); ?></th>
 				<th class="psorting"><?php echo $this->Paginator->sort('Documents.name', __('Document')); ?></th>
 				<th class="psorting"><?php echo $this->Paginator->sort('Documents.doc_type', __('Category')); ?></th>
-				<th class="psorting"><?php echo $this->Paginator->sort('Dropdowns.title', __('Type')); ?></th>
-				<th class="psorting"><?php echo $this->Paginator->sort('Documents.created', __('Created')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Dropdowns.title', __('Folder')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Documents.type', __('Type')); ?></th>
+				<th class="psorting"><?php echo $this->Paginator->sort('Documents.created', __('Created / by')); ?></th>
 				<th><a href="#">Options</a></th>
 			</tr>
 		</thead>
@@ -27,6 +28,7 @@
 						echo "<td>".$row['name']."</td>";
 						echo "<td>".$row['doc_type']."</td>";
 						echo "<td>".$row['dropdown']['title']."</td>";
+						echo "<td>".$row['type']."</td>";
 						echo "<td>".$row['created']->format('M d, Y')."</td>";
 						echo "<td>";
 					

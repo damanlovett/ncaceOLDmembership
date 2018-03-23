@@ -39,7 +39,18 @@
 		
 		</table>
 	</span>
+
    </div>
+  		<span class="panel-title-left">
+			
+			<button onclick="myFunction()" class="btn btn-primary">Reload page</button>
+
+<script>
+function myFunction() {
+    location.reload();
+}
+</script>
+		</span>
 		
 		<?php echo $this->element('../Documents/all_manager'); ?>
 	</div>
